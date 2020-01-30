@@ -10,15 +10,23 @@ $(document).ready(function() {
   $(document).keydown(function(e) {
     let kC = e.keyCode;
     let getKeyEl = $("#" + kC);
+    let keyElNum = parseInt(getKeyEl[0].id, 10);
 
     if (kC == 16) {
       upKeyboard.show();
       lowKeyboard.hide();
     }
 
+    // trying to highlight current key on keyboard without a loop
+    if (kC !== undefined) {
+      if (e.keyCode === keyElNum) {
+        getKeyEl.css("background-color", "yellow");
+      }
+    }
+
     //highlighting key pressed
-    if (e.key === getKeyEl.innerHTML){getKeyEl.css("background-color", "yellow")}
-    console.log(getKeyEl.innerHTML)
+    console.log(e.keyCode);
+    console.log(keyElNum);
 
     // for (let i = 0; i < keyList.length; i++) {
     //   if (e.key == keyList[i].innerText) {
